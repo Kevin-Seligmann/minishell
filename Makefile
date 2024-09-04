@@ -6,7 +6,7 @@
 #    By: kseligma <kseligma@student.42barcel>       +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/02/04 19:10:12 by mcatalan@st       #+#    #+#              #
-#    Updated: 2024/06/20 10:46:04 by kseligma         ###   ########.fr        #
+#    Updated: 2024/09/04 05:04:43 by kseligma         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -87,52 +87,7 @@ OBJ =	env_utils1.o				\
 		parsing_util.o				\
 		searching.o					\
 
-OBJ_B =	env_utils1_bonus.o				\
-		env_utils2_bonus.o				\
-		errors_bonus.o					\
-		free_exit_bonus.o				\
-		input_bonus.o					\
-		minishell_bonus.o				\
-		prompt_bonus.o					\
-		signals_bonus.o					\
-		utils_bonus.o					\
-		ft_cd_bonus.o					\
-		ft_echo_bonus.o					\
-		ft_env_bonus.o					\
-		ft_exit_bonus.o					\
-		ft_export_bonus.o				\
-		ft_export_util_bonus.o			\
-		ft_pwd_bonus.o					\
-		ft_unset_bonus.o				\
-		env_to_array_bonus.o			\
-		execute_command_tree_bonus.o	\
-		execute_pipeline_bonus.o		\
-		execute_redirections_bonus.o	\
-		execute_simple_command_bonus.o	\
-		execution_util_bonus.o			\
-		find_path_bonus.o				\
-		directories_bonus.o				\
-		expansion_quotes_bonus.o		\
-		expansion_bonus.o				\
-		parameter_expansion_bonus.o		\
-		pathname_expansion_bonus.o		\
-		wildcard_matching_bonus.o		\
-		word_splitting_bonus.o			\
-		here_doc_bonus.o				\
-		here_doc_util_bonus.o			\
-		parse_connected_command_bonus.o	\
-		parse_list_bonus.o				\
-		parse_redir_bonus.o				\
-		parse_simple_command_bonus.o	\
-		parse_trimming_bonus.o			\
-		parse_word_bonus.o				\
-		parser_bonus.o					\
-		parsing_util_bonus.o			\
-		searching_bonus.o				\
-
 OBJS = $(addprefix $(OBJ_DIR)/, $(OBJ))
-
-OBJS_B = $(addprefix $(OBJ_DIR)/, $(OBJ_B))
 
 DEPS = $(OBJS:.o=.d) $(OBJS_B:.o=.d)
 
@@ -148,14 +103,6 @@ all: $(OBJ_DIR) print_message libft $(NAME)
 $(NAME): $(OBJS) $(LIBFT_D)$(LIBFT) $(READLINE_A) Makefile
 	@echo "$(YELLOW)Linking...$(RESET)"
 	@$(CC) $(CFLAGS) $(INCLUDE) $(DEFS) $(OBJS) -o $@ $(LIBFT_D)$(LIBFT) $(READLINE_A) $(READLINE_FLAGS)
-	@echo "$(GREEN)Linked!$(RESET)✅"
-
-# Bonus linking
-bonus: $(OBJ_DIR) print_message libft $(NAME_B)
-
-$(NAME_B): $(OBJS_B) $(LIBFT_D)$(LIBFT) $(READLINE_A) Makefile
-	@echo "$(YELLOW)Linking...$(RESET)"
-	@$(CC) $(CFLAGS) $(INCLUDE) $(DEFS) $(OBJS_B) -o $@ $(LIBFT_D)$(LIBFT) $(READLINE_A) $(READLINE_FLAGS)
 	@echo "$(GREEN)Linked!$(RESET)✅"
 
 # Compilation
@@ -217,6 +164,4 @@ jesusg:
 
 re: fclean all
 
-re_bonus: fclean bonus
-
-.PHONY: all clean fclean re libft readline jesusg config debug bonus re_bonus $(OBJ_DIR)
+.PHONY: all clean fclean re libft readline jesusg config debug
